@@ -1,0 +1,14 @@
+# Ignorar entorno virtual
+Include/
+Lib/
+Scripts/
+pyvenv.cfg
+
+# Ignorar cache
+__pycache__/
+*.pyc
+
+# Permitir código
+!app.py
+!templates/
+!static/

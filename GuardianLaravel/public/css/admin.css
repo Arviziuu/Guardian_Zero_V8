@@ -1,0 +1,103 @@
+body {
+    background-color: #E6EFF2;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: #0f4c5c;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 25px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.logo-text {
+    color: white;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.menu {
+    flex: 1;
+    padding: 20px 15px;
+}
+
+.menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 12px 18px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+.menu a:hover {
+    background: rgba(26,166,166,0.25);
+    transform: translateX(4px);
+}
+
+.menu a.active {
+    background: #1AA6A6;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(26,166,166,0.4);
+}
+
+.menu a.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 40px;
+    width: 5px;
+    background: #1AA6A6;
+    border-radius: 0 5px 5px 0;
+}
+
+.logout {
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.logout a {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(255,80,80,0.15);
+    color: #ffb3b3;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.logout a:hover {
+    background: rgba(255,80,80,0.3);
+}
+
+.content {
+    margin-left: 250px;
+    padding: 30px;
+}
