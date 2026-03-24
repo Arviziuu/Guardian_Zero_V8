@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 
+# Cargar .env antes de leer cualquier variable
 load_dotenv()
 
 class Config:
@@ -8,14 +9,14 @@ class Config:
     SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key-change-in-production")
 
     # --- Base de Datos ---
-    DB_USER     = os.getenv("DB_USER", "root")
-    DB_PASSWORD = os.getenv("DB_PASSWORD", "Puchys2005")
-    DB_HOST     = os.getenv("DB_HOST", "localhost")
-    DB_PORT     = os.getenv("DB_PORT", "3306")
-    DB_NAME     = os.getenv("DB_NAME", "guardian_zero2")
-
+    # Lee SIEMPRE del .env — nunca hardcodear credenciales en el código
     SQLALCHEMY_DATABASE_URI = (
-        f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+        "mysql+pymysql://"
+        f"{os.getenv('DB_USER', 'root')}:"
+        f"{os.getenv('DB_PASSWORD', '')}@"
+        f"{os.getenv('DB_HOST', 'localhost')}:"
+        f"{os.getenv('DB_PORT', '3306')}/"
+        f"{os.getenv('DB_NAME', 'guardian_zero2')}"
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
@@ -23,6 +24,7 @@ class Config:
     MAIL_SERVER         = "smtp.gmail.com"
     MAIL_PORT           = 587
     MAIL_USE_TLS        = True
+    MAIL_USE_SSL        = False
     MAIL_USERNAME       = os.getenv("MAIL_USERNAME")
     MAIL_PASSWORD       = os.getenv("MAIL_PASSWORD")
     MAIL_DEFAULT_SENDER = os.getenv("MAIL_USERNAME")
