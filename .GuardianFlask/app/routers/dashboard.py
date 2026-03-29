@@ -535,9 +535,6 @@ def reporte_nuevo():
     longitud    = request.form.get("longitud")
 
     voluntario = Voluntario.query.filter_by(ID_Usuario=usuario.ID).first()
-    if not voluntario:
-        flash("Debes estar registrado como voluntario para enviar reportes.", "error")
-        return redirect(url_for("dashboard.reporte"))
 
     zona = None
     if latitud and longitud:
@@ -555,7 +552,7 @@ def reporte_nuevo():
         Descripcion_Emergencia = descripcion,
         Prioridad              = prioridad,
         Estatus                = "Pendiente",
-        ID_Voluntario          = voluntario.ID,
+        ID_Voluntario          = voluntario.ID if voluntario else None,
         ID_Zona_Afectada       = zona.ID if zona else None,
     )
     db.session.add(nuevo_reporte)
